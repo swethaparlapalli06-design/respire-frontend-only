@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { trafficApi, aqiApi, alertsApi } from '../services/api';
 
 // Fix for default markers in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -68,35 +69,27 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ type, onSimulateSolution }) => {
     try {
       if (type === 'traffic') {
         console.log('Fetching traffic data...');
-        const response = await fetch(`http://localhost:5000/api/traffic?bbox=${bbox}`);
-        console.log('Traffic response status:', response.status);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
+        const data = await trafficApi.getTrafficData(bbox);
         console.log('Traffic data received:', data);
         
         if (data.segments && data.segments.length > 0) {
           data.segments.forEach((segment: any, index: number) => {
             console.log(`Adding traffic segment ${index}:`, segment);
-            const color = segment.congestionLevel > 0.7 ? 'red' : segment.congestionLevel > 0.3 ? 'orange' : 'green';
-                   L.circleMarker([segment.location.lat, segment.location.lng], {
-                     radius: 8,
-                     fillColor: color,
-                     color: '#000',
-                     weight: 1,
-                     opacity: 1,
-                     fillOpacity: 0.8
-                   }).bindPopup(`
-                     <div style="min-width: 200px;">
-                       <h3><strong>${segment.roadName || segment.name}</strong></h3>
-                       <p><strong>Congestion:</strong> ${(segment.congestionLevel * 100).toFixed(1)}%</p>
-                       <p><strong>Road Type:</strong> ${segment.roadType}</p>
-                       <p><strong>Travel Time:</strong> ${segment.travelTime} minutes</p>
-                       <p><strong>Coordinates:</strong> ${segment.location.coordinates}</p>
-                       <p><strong>Address:</strong> ${segment.location.address}</p>
+            const color = segment.congestion > 0.7 ? 'red' : segment.congestion > 0.3 ? 'orange' : 'green';
+            
+            // Create polyline for road segment
+            if (segment.coordinates && segment.coordinates.length >= 2) {
+              const polyline = L.polyline(segment.coordinates, {
+                color: color,
+                weight: 6,
+                opacity: 0.8
+              }).bindPopup(`
+                <div style="min-width: 200px;">
+                  <h3><strong>Traffic Segment ${index + 1}</strong></h3>
+                  <p><strong>Congestion:</strong> ${(segment.congestion * 100).toFixed(1)}%</p>
+                  <p><strong>Speed:</strong> ${segment.speedKmph} km/h</p>
+                  <p><strong>Free Flow:</strong> ${segment.freeflowKmph} km/h</p>
+                  <p><strong>Road Type:</strong> ${segment.roadType}</p>
                      </div>
                    `).addTo(markersRef.current);
           });
@@ -107,15 +100,13 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ type, onSimulateSolution }) => {
         if (data.incidents && data.incidents.length > 0) {
           data.incidents.forEach((incident: any, index: number) => {
             console.log(`Adding traffic incident ${index}:`, incident);
-            L.marker([incident.location.lat, incident.location.lng])
+            L.marker([incident.coordinates[1], incident.coordinates[0]])
               .bindPopup(`
                 <div style="min-width: 200px;">
                   <h3><strong>${incident.type}</strong></h3>
                   <p><strong>Description:</strong> ${incident.description}</p>
                   <p><strong>Severity:</strong> ${incident.severity}</p>
-                  <p><strong>Coordinates:</strong> ${incident.coordinates}</p>
-                  <p><strong>Address:</strong> ${incident.address}</p>
-                  <p><strong>Road:</strong> ${incident.roadName}</p>
+                  <p><strong>Time:</strong> ${new Date(incident.timestamp).toLocaleString()}</p>
                 </div>
               `).addTo(markersRef.current);
           });
@@ -124,36 +115,29 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ type, onSimulateSolution }) => {
         }
       } else if (type === 'pollution') {
         console.log('Fetching pollution data...');
-        const response = await fetch(`http://localhost:5000/api/aqi?bbox=${bbox}`);
-        console.log('Pollution response status:', response.status);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
+        const data = await aqiApi.getAqiData(bbox);
         console.log('Pollution data received:', data);
         
-               if (data.stations && data.stations.length > 0) {
-                 data.stations.forEach((station: any, index: number) => {
-                   console.log(`Adding AQI station ${index}:`, station);
-                   const aqi = station.aqi || 0;
-                   let color = 'green';
-                   let pollutionLevel = 'Good';
-                   if (aqi > 300) { color = 'purple'; pollutionLevel = 'Hazardous'; }
-                   else if (aqi > 200) { color = 'red'; pollutionLevel = 'Very Unhealthy'; }
-                   else if (aqi > 150) { color = 'orange'; pollutionLevel = 'Unhealthy'; }
-                   else if (aqi > 100) { color = 'yellow'; pollutionLevel = 'Unhealthy for Sensitive Groups'; }
-                   else if (aqi > 50) { color = 'lightgreen'; pollutionLevel = 'Moderate'; }
+        if (data.stations && data.stations.length > 0) {
+          data.stations.forEach((station: any, index: number) => {
+            console.log(`Adding AQI station ${index}:`, station);
+            const aqi = station.aqi || 0;
+            let color = 'green';
+            let pollutionLevel = 'Good';
+            if (aqi > 300) { color = 'purple'; pollutionLevel = 'Hazardous'; }
+            else if (aqi > 200) { color = 'red'; pollutionLevel = 'Very Unhealthy'; }
+            else if (aqi > 150) { color = 'orange'; pollutionLevel = 'Unhealthy'; }
+            else if (aqi > 100) { color = 'yellow'; pollutionLevel = 'Unhealthy for Sensitive Groups'; }
+            else if (aqi > 50) { color = 'lightgreen'; pollutionLevel = 'Moderate'; }
 
-                   L.circleMarker([station.location.lat, station.location.lng], {
-                     radius: 12,
-                     fillColor: color,
-                     color: '#000',
-                     weight: 2,
-                     opacity: 1,
-                     fillOpacity: 0.8
-                   }).bindPopup(`
+            L.circleMarker([station.coordinates[1], station.coordinates[0]], {
+              radius: 12,
+              fillColor: color,
+              color: '#000',
+              weight: 2,
+              opacity: 1,
+              fillOpacity: 0.8
+            }).bindPopup(`
                      <div style="min-width: 280px;">
                        <h3><strong>${station.name}</strong></h3>
                        <p><strong>Station Code:</strong> ${station.stationCode}</p>
