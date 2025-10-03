@@ -41,7 +41,15 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
       // Create markers group
       markersRef.current = L.layerGroup().addTo(mapRef.current);
       
-      console.log('Map created successfully');
+      // Ensure map is fully interactive
+      mapRef.current.dragging.enable();
+      mapRef.current.touchZoom.enable();
+      mapRef.current.doubleClickZoom.enable();
+      mapRef.current.scrollWheelZoom.enable();
+      mapRef.current.boxZoom.enable();
+      mapRef.current.keyboard.enable();
+      
+      console.log('Map created successfully with full interactivity');
     }
 
     // Clear existing markers
@@ -474,7 +482,14 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
 
   return (
     <div className="relative w-full h-full">
-      <div id="map-container" className="w-full h-full"></div>
+      <div 
+        id="map-container" 
+        className="w-full h-full"
+        style={{ 
+          cursor: 'grab',
+          touchAction: 'none'
+        }}
+      ></div>
       {!mapRef.current && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
           <div className="text-lg font-semibold text-gray-600">Loading map...</div>
