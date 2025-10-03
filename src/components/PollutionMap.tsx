@@ -4,7 +4,7 @@ import { AqiCell, AqiStation, Alert, MapViewport } from '../types';
 import { WebSocketService } from '../services/websocket';
 import { aqiApi, alertsApi } from '../services/api';
 import { AlertTriangle, MapPin, Users, Clock } from 'lucide-react';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 // Set Mapbox access token
 const MAPBOX_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -55,10 +55,10 @@ const PollutionMap: React.FC<PollutionMapProps> = ({ wsService, onSimulateSoluti
       setStations(data.stations);
       setLastUpdated(data.updatedAt);
       
-      toast.success('Air quality data updated');
+      // toast.success('Air quality data updated');
     } catch (error) {
       console.error('Error loading AQI data:', error);
-      toast.error('Failed to load air quality data');
+      // toast.error('Failed to load air quality data');
     } finally {
       setLoading(false);
     }
@@ -71,7 +71,7 @@ const PollutionMap: React.FC<PollutionMapProps> = ({ wsService, onSimulateSoluti
       setAlerts(data.alerts);
     } catch (error) {
       console.error('Error loading alerts:', error);
-      toast.error('Failed to load alerts');
+      // toast.error('Failed to load alerts');
     }
   };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Toaster } from 'react-hot-toast';
+// import { Toaster } from 'react-hot-toast';
 import { Map, MapPin, AlertTriangle, Download, Settings, Car, Lightbulb, Star } from 'lucide-react';
 import SimpleMap from './components/SimpleMap';
 import Simulator from './components/Simulator';
@@ -327,7 +327,7 @@ function App() {
       )}
 
       {/* Toast Notifications */}
-      <Toaster
+      {/* <Toaster
         position="top-right"
         toastOptions={{
           duration: 4000,
@@ -336,7 +336,7 @@ function App() {
             color: '#fff',
           },
         }}
-      />
+      /> */}
     </div>
   );
 }

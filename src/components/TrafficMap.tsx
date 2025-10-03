@@ -4,7 +4,7 @@ import { TrafficSegment, Incident, MapViewport } from '../types';
 import { WebSocketService } from '../services/websocket';
 import { trafficApi } from '../services/api';
 import { Car, AlertTriangle, Clock, Gauge } from 'lucide-react';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 // Set Mapbox access token
 const MAPBOX_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -50,10 +50,10 @@ const TrafficMap: React.FC<TrafficMapProps> = ({ wsService }) => {
       setIncidents(data.incidents);
       setLastUpdated(data.updatedAt);
       
-      toast.success('Traffic data updated');
+      // toast.success('Traffic data updated');
     } catch (error) {
       console.error('Error loading traffic data:', error);
-      toast.error('Failed to load traffic data');
+      // toast.error('Failed to load traffic data');
     } finally {
       setLoading(false);
     }
