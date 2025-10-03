@@ -67,8 +67,6 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
       }).bindPopup(`
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
-          <p><strong>Speed:</strong> 15 km/h</p>
-          <p><strong>Free Flow:</strong> 60 km/h</p>
           <p><strong>Congestion:</strong> 75%</p>
           <p><strong>Coordinates:</strong> 17.3850°N, 78.4867°E</p>
           <p><strong>Address:</strong> Abids Junction, Hyderabad</p>
@@ -85,8 +83,6 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
       }).bindPopup(`
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
-          <p><strong>Speed:</strong> 35 km/h</p>
-          <p><strong>Free Flow:</strong> 50 km/h</p>
           <p><strong>Congestion:</strong> 45%</p>
           <p><strong>Coordinates:</strong> 17.3800°N, 78.4800°E</p>
           <p><strong>Address:</strong> Charminar Area, Hyderabad</p>
@@ -103,8 +99,6 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
       }).bindPopup(`
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
-          <p><strong>Speed:</strong> 45 km/h</p>
-          <p><strong>Free Flow:</strong> 55 km/h</p>
           <p><strong>Congestion:</strong> 25%</p>
           <p><strong>Coordinates:</strong> 17.3900°N, 78.4800°E</p>
           <p><strong>Address:</strong> Kukatpally Road, Hyderabad</p>
