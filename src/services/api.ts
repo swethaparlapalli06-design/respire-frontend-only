@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { TrafficResponse, AqiResponse, AlertsResponse, SimulationRequest, SimulationResult } from '../types';
+import { mockTrafficData, mockAqiData, mockAlertsData } from './mockData';
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'http://localhost:3001/api';
 
 // Create axios instance with default config
 const api = axios.create({
@@ -39,8 +40,13 @@ api.interceptors.response.use(
 // Traffic API
 export const trafficApi = {
   getTrafficData: async (bbox: string): Promise<TrafficResponse> => {
-    const response = await api.get('/traffic', { params: { bbox } });
-    return response.data;
+    try {
+      const response = await api.get('/traffic', { params: { bbox } });
+      return response.data;
+    } catch (error) {
+      console.log('Using mock traffic data');
+      return mockTrafficData;
+    }
   },
 
   getSegmentDetails: async (id: string) => {
@@ -57,8 +63,13 @@ export const trafficApi = {
 // AQI API
 export const aqiApi = {
   getAqiData: async (bbox: string): Promise<AqiResponse> => {
-    const response = await api.get('/aqi', { params: { bbox } });
-    return response.data;
+    try {
+      const response = await api.get('/aqi', { params: { bbox } });
+      return response.data;
+    } catch (error) {
+      console.log('Using mock AQI data');
+      return mockAqiData;
+    }
   },
 
   getStations: async () => {
@@ -75,13 +86,23 @@ export const aqiApi = {
 // Alerts API
 export const alertsApi = {
   getAlerts: async (bbox: string): Promise<AlertsResponse> => {
-    const response = await api.get('/alerts', { params: { bbox } });
-    return response.data;
+    try {
+      const response = await api.get('/alerts', { params: { bbox } });
+      return response.data;
+    } catch (error) {
+      console.log('Using mock alerts data');
+      return mockAlertsData;
+    }
   },
 
   getHighPriorityAlerts: async (bbox: string): Promise<AlertsResponse> => {
-    const response = await api.get('/alerts/high-priority', { params: { bbox } });
-    return response.data;
+    try {
+      const response = await api.get('/alerts/high-priority', { params: { bbox } });
+      return response.data;
+    } catch (error) {
+      console.log('Using mock alerts data');
+      return mockAlertsData;
+    }
   },
 
   getAlertDetails: async (id: string) => {
