@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { Toaster } from 'react-hot-toast';
 import { Map, MapPin, AlertTriangle, Download, Settings, Car, Lightbulb, Star } from 'lucide-react';
-import SimpleMap from './components/SimpleMap';
+import WorkingMap from './components/WorkingMap';
 import Simulator from './components/Simulator';
 import LandingPage from './components/LandingPage';
 import { WebSocketService } from './services/websocket';
@@ -242,7 +242,7 @@ function App() {
         <div className="flex-1 p-8">
           {activeTab === 'traffic' ? (
             <div className="h-full">
-              <SimpleMap type="traffic" />
+              <WorkingMap type="traffic" />
             </div>
           ) : (
             <div className="space-y-8">
@@ -307,10 +307,7 @@ function App() {
               {/* Map Section */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="h-96">
-                  <SimpleMap 
-                    type="pollution"
-                    onSimulateSolution={handleSimulateSolution}
-                  />
+                  <WorkingMap type="pollution" />
                 </div>
               </div>
             </div>
