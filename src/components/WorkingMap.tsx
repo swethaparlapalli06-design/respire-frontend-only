@@ -56,14 +56,14 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
     console.log('Adding test data...');
 
     if (type === 'traffic') {
-      // Add traffic segments as colored lines
-      const segment1 = L.polyline([
-        [17.3850, 78.4867],
-        [17.3900, 78.4900]
-      ], {
-        color: 'red',
-        weight: 6,
-        opacity: 0.8
+      // Add traffic segments as colored DOTS/CIRCLES
+      L.circleMarker([17.3850, 78.4867], {
+        radius: 12,
+        fillColor: 'red',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
       }).bindPopup(`
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment 1</strong></h3>
@@ -73,13 +73,13 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         </div>
       `).addTo(markersRef.current);
 
-      const segment2 = L.polyline([
-        [17.3800, 78.4800],
-        [17.3850, 78.4850]
-      ], {
-        color: 'orange',
-        weight: 6,
-        opacity: 0.8
+      L.circleMarker([17.3800, 78.4800], {
+        radius: 12,
+        fillColor: 'orange',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
       }).bindPopup(`
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment 2</strong></h3>
@@ -89,13 +89,13 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         </div>
       `).addTo(markersRef.current);
 
-      const segment3 = L.polyline([
-        [17.3900, 78.4800],
-        [17.3950, 78.4850]
-      ], {
-        color: 'green',
-        weight: 6,
-        opacity: 0.8
+      L.circleMarker([17.3900, 78.4800], {
+        radius: 12,
+        fillColor: 'green',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
       }).bindPopup(`
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment 3</strong></h3>
@@ -104,6 +104,52 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
           <p><strong>Road Type:</strong> Local</p>
         </div>
       `).addTo(markersRef.current);
+
+      // Add MORE traffic dots scattered around
+      L.circleMarker([17.3750, 78.4750], {
+        radius: 10,
+        fillColor: 'red',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('High Congestion - 80%').addTo(markersRef.current);
+
+      L.circleMarker([17.3950, 78.4950], {
+        radius: 10,
+        fillColor: 'orange',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('Medium Congestion - 50%').addTo(markersRef.current);
+
+      L.circleMarker([17.3700, 78.4900], {
+        radius: 10,
+        fillColor: 'green',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('Low Congestion - 20%').addTo(markersRef.current);
+
+      L.circleMarker([17.4000, 78.4700], {
+        radius: 10,
+        fillColor: 'red',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('High Congestion - 85%').addTo(markersRef.current);
+
+      L.circleMarker([17.3650, 78.4850], {
+        radius: 10,
+        fillColor: 'orange',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('Medium Congestion - 60%').addTo(markersRef.current);
 
       // Add incident markers
       L.marker([17.3850, 78.4867])
@@ -177,6 +223,52 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
           <p><strong>Status:</strong> Unhealthy</p>
         </div>
       `).addTo(markersRef.current);
+
+      // Add MORE pollution dots scattered around
+      L.circleMarker([17.3750, 78.4750], {
+        radius: 12,
+        fillColor: 'purple',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('AQI: 320 - Hazardous').addTo(markersRef.current);
+
+      L.circleMarker([17.3950, 78.4950], {
+        radius: 12,
+        fillColor: 'red',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('AQI: 250 - Very Unhealthy').addTo(markersRef.current);
+
+      L.circleMarker([17.3700, 78.4900], {
+        radius: 12,
+        fillColor: 'orange',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('AQI: 180 - Unhealthy').addTo(markersRef.current);
+
+      L.circleMarker([17.4000, 78.4700], {
+        radius: 12,
+        fillColor: 'yellow',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('AQI: 120 - Unhealthy for Sensitive').addTo(markersRef.current);
+
+      L.circleMarker([17.3650, 78.4850], {
+        radius: 12,
+        fillColor: 'lightgreen',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup('AQI: 80 - Moderate').addTo(markersRef.current);
 
       console.log('Added 3 AQI stations');
     }
