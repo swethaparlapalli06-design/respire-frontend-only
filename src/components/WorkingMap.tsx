@@ -66,10 +66,12 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         fillOpacity: 0.8
       }).bindPopup(`
         <div style="min-width: 200px;">
-          <h3><strong>Traffic Segment 1</strong></h3>
-          <p><strong>Congestion:</strong> 75%</p>
+          <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Speed:</strong> 15 km/h</p>
-          <p><strong>Road Type:</strong> Major</p>
+          <p><strong>Free Flow:</strong> 60 km/h</p>
+          <p><strong>Congestion:</strong> 75%</p>
+          <p><strong>Coordinates:</strong> 17.3850°N, 78.4867°E</p>
+          <p><strong>Address:</strong> Abids Junction, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
@@ -82,10 +84,12 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         fillOpacity: 0.8
       }).bindPopup(`
         <div style="min-width: 200px;">
-          <h3><strong>Traffic Segment 2</strong></h3>
-          <p><strong>Congestion:</strong> 45%</p>
+          <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Speed:</strong> 35 km/h</p>
-          <p><strong>Road Type:</strong> Arterial</p>
+          <p><strong>Free Flow:</strong> 50 km/h</p>
+          <p><strong>Congestion:</strong> 45%</p>
+          <p><strong>Coordinates:</strong> 17.3800°N, 78.4800°E</p>
+          <p><strong>Address:</strong> Charminar Area, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
@@ -98,10 +102,12 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         fillOpacity: 0.8
       }).bindPopup(`
         <div style="min-width: 200px;">
-          <h3><strong>Traffic Segment 3</strong></h3>
-          <p><strong>Congestion:</strong> 25%</p>
+          <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Speed:</strong> 45 km/h</p>
-          <p><strong>Road Type:</strong> Local</p>
+          <p><strong>Free Flow:</strong> 55 km/h</p>
+          <p><strong>Congestion:</strong> 25%</p>
+          <p><strong>Coordinates:</strong> 17.3900°N, 78.4800°E</p>
+          <p><strong>Address:</strong> Kukatpally Road, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
@@ -184,11 +190,15 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         opacity: 1,
         fillOpacity: 0.8
       }).bindPopup(`
-        <div style="min-width: 200px;">
-          <h3><strong>Abids Road</strong></h3>
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Abids Junction</strong></h3>
+          <p><strong>Station Code:</strong> HYD_ABD_001</p>
           <p><strong>AQI:</strong> 180</p>
           <p><strong>PM2.5:</strong> 85 μg/m³</p>
-          <p><strong>Status:</strong> Unhealthy</p>
+          <p><strong>PM10:</strong> 120 μg/m³</p>
+          <p><strong>NO₂:</strong> 45 ppb</p>
+          <p><strong>Coordinates:</strong> 17.3850°N, 78.4867°E</p>
+          <p><strong>Address:</strong> Abids Junction, Hyderabad, Telangana 500001</p>
         </div>
       `).addTo(markersRef.current);
 
@@ -200,11 +210,15 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         opacity: 1,
         fillOpacity: 0.8
       }).bindPopup(`
-        <div style="min-width: 200px;">
-          <h3><strong>Charminar</strong></h3>
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Charminar</strong></h3>
+          <p><strong>Station Code:</strong> HYD_CHM_002</p>
           <p><strong>AQI:</strong> 220</p>
           <p><strong>PM2.5:</strong> 105 μg/m³</p>
-          <p><strong>Status:</strong> Very Unhealthy</p>
+          <p><strong>PM10:</strong> 150 μg/m³</p>
+          <p><strong>NO₂:</strong> 55 ppb</p>
+          <p><strong>Coordinates:</strong> 17.3800°N, 78.4800°E</p>
+          <p><strong>Address:</strong> Charminar Area, Hyderabad, Telangana 500002</p>
         </div>
       `).addTo(markersRef.current);
 
@@ -216,11 +230,15 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         opacity: 1,
         fillOpacity: 0.8
       }).bindPopup(`
-        <div style="min-width: 200px;">
-          <h3><strong>Kukatpally Road</strong></h3>
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Kukatpally Road</strong></h3>
+          <p><strong>Station Code:</strong> HYD_KUK_003</p>
           <p><strong>AQI:</strong> 160</p>
           <p><strong>PM2.5:</strong> 75 μg/m³</p>
-          <p><strong>Status:</strong> Unhealthy</p>
+          <p><strong>PM10:</strong> 110 μg/m³</p>
+          <p><strong>NO₂:</strong> 40 ppb</p>
+          <p><strong>Coordinates:</strong> 17.3900°N, 78.4800°E</p>
+          <p><strong>Address:</strong> Kukatpally Road, Hyderabad, Telangana 500003</p>
         </div>
       `).addTo(markersRef.current);
 
