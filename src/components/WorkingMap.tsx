@@ -105,8 +105,9 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         </div>
       `).addTo(markersRef.current);
 
-      // Add MORE traffic dots scattered around
-      L.circleMarker([17.3750, 78.4750], {
+      // Add MORE traffic dots scattered across ALL of Hyderabad
+      // North Hyderabad
+      L.circleMarker([17.4500, 78.3500], {
         radius: 10,
         fillColor: 'red',
         color: '#000',
@@ -117,12 +118,13 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Congestion:</strong> 80%</p>
-          <p><strong>Coordinates:</strong> 17.3750°N, 78.4750°E</p>
-          <p><strong>Address:</strong> Mehdipatnam Area, Hyderabad</p>
+          <p><strong>Coordinates:</strong> 17.4500°N, 78.3500°E</p>
+          <p><strong>Address:</strong> Secunderabad Railway Station, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
-      L.circleMarker([17.3950, 78.4950], {
+      // West Hyderabad - HITECH City
+      L.circleMarker([17.4400, 78.3500], {
         radius: 10,
         fillColor: 'orange',
         color: '#000',
@@ -133,12 +135,13 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Congestion:</strong> 50%</p>
-          <p><strong>Coordinates:</strong> 17.3950°N, 78.4950°E</p>
-          <p><strong>Address:</strong> Jubilee Hills Area, Hyderabad</p>
+          <p><strong>Coordinates:</strong> 17.4400°N, 78.3500°E</p>
+          <p><strong>Address:</strong> HITECH City, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
-      L.circleMarker([17.3700, 78.4900], {
+      // South Hyderabad
+      L.circleMarker([17.3200, 78.4500], {
         radius: 10,
         fillColor: 'green',
         color: '#000',
@@ -149,12 +152,13 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Congestion:</strong> 20%</p>
-          <p><strong>Coordinates:</strong> 17.3700°N, 78.4900°E</p>
-          <p><strong>Address:</strong> Secunderabad Area, Hyderabad</p>
+          <p><strong>Coordinates:</strong> 17.3200°N, 78.4500°E</p>
+          <p><strong>Address:</strong> Mehdipatnam Area, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
-      L.circleMarker([17.4000, 78.4700], {
+      // East Hyderabad
+      L.circleMarker([17.4000, 78.6000], {
         radius: 10,
         fillColor: 'red',
         color: '#000',
@@ -165,12 +169,13 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Congestion:</strong> 85%</p>
-          <p><strong>Coordinates:</strong> 17.4000°N, 78.4700°E</p>
-          <p><strong>Address:</strong> Banjara Hills Area, Hyderabad</p>
+          <p><strong>Coordinates:</strong> 17.4000°N, 78.6000°E</p>
+          <p><strong>Address:</strong> Uppal Area, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
-      L.circleMarker([17.3650, 78.4850], {
+      // Central Hyderabad
+      L.circleMarker([17.3600, 78.4800], {
         radius: 10,
         fillColor: 'orange',
         color: '#000',
@@ -181,8 +186,42 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 200px;">
           <h3><strong>Traffic Segment</strong></h3>
           <p><strong>Congestion:</strong> 60%</p>
-          <p><strong>Coordinates:</strong> 17.3650°N, 78.4850°E</p>
+          <p><strong>Coordinates:</strong> 17.3600°N, 78.4800°E</p>
           <p><strong>Address:</strong> Malakpet Area, Hyderabad</p>
+        </div>
+      `).addTo(markersRef.current);
+
+      // North-West Hyderabad
+      L.circleMarker([17.4200, 78.3800], {
+        radius: 10,
+        fillColor: 'red',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup(`
+        <div style="min-width: 200px;">
+          <h3><strong>Traffic Segment</strong></h3>
+          <p><strong>Congestion:</strong> 70%</p>
+          <p><strong>Coordinates:</strong> 17.4200°N, 78.3800°E</p>
+          <p><strong>Address:</strong> Jubilee Hills Area, Hyderabad</p>
+        </div>
+      `).addTo(markersRef.current);
+
+      // South-East Hyderabad
+      L.circleMarker([17.3300, 78.5500], {
+        radius: 10,
+        fillColor: 'green',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup(`
+        <div style="min-width: 200px;">
+          <h3><strong>Traffic Segment</strong></h3>
+          <p><strong>Congestion:</strong> 30%</p>
+          <p><strong>Coordinates:</strong> 17.3300°N, 78.5500°E</p>
+          <p><strong>Address:</strong> Vanasthalipuram Area, Hyderabad</p>
         </div>
       `).addTo(markersRef.current);
 
@@ -271,51 +310,153 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         </div>
       `).addTo(markersRef.current);
 
-      // Add MORE pollution dots scattered around
-      L.circleMarker([17.3750, 78.4750], {
+      // Add MORE CPCB pollution stations scattered across ALL of Hyderabad
+      // North Hyderabad - Secunderabad
+      L.circleMarker([17.4500, 78.3500], {
         radius: 12,
         fillColor: 'purple',
         color: '#000',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('AQI: 320 - Hazardous').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Secunderabad Railway</strong></h3>
+          <p><strong>Station Code:</strong> HYD_SEC_004</p>
+          <p><strong>AQI:</strong> 320</p>
+          <p><strong>PM2.5:</strong> 165 μg/m³</p>
+          <p><strong>PM10:</strong> 200 μg/m³</p>
+          <p><strong>NO₂:</strong> 65 ppb</p>
+          <p><strong>Coordinates:</strong> 17.4500°N, 78.3500°E</p>
+          <p><strong>Address:</strong> Secunderabad Railway Station, Hyderabad, Telangana 500003</p>
+        </div>
+      `).addTo(markersRef.current);
 
-      L.circleMarker([17.3950, 78.4950], {
+      // West Hyderabad - HITECH City
+      L.circleMarker([17.4400, 78.3500], {
         radius: 12,
         fillColor: 'red',
         color: '#000',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('AQI: 250 - Very Unhealthy').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - HITECH City</strong></h3>
+          <p><strong>Station Code:</strong> HYD_HTC_005</p>
+          <p><strong>AQI:</strong> 250</p>
+          <p><strong>PM2.5:</strong> 125 μg/m³</p>
+          <p><strong>PM10:</strong> 180 μg/m³</p>
+          <p><strong>NO₂:</strong> 60 ppb</p>
+          <p><strong>Coordinates:</strong> 17.4400°N, 78.3500°E</p>
+          <p><strong>Address:</strong> HITECH City, Hyderabad, Telangana 500081</p>
+        </div>
+      `).addTo(markersRef.current);
 
-      L.circleMarker([17.3700, 78.4900], {
+      // South Hyderabad - Mehdipatnam
+      L.circleMarker([17.3200, 78.4500], {
         radius: 12,
         fillColor: 'orange',
         color: '#000',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('AQI: 180 - Unhealthy').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Mehdipatnam</strong></h3>
+          <p><strong>Station Code:</strong> HYD_MEH_006</p>
+          <p><strong>AQI:</strong> 180</p>
+          <p><strong>PM2.5:</strong> 85 μg/m³</p>
+          <p><strong>PM10:</strong> 130 μg/m³</p>
+          <p><strong>NO₂:</strong> 45 ppb</p>
+          <p><strong>Coordinates:</strong> 17.3200°N, 78.4500°E</p>
+          <p><strong>Address:</strong> Mehdipatnam Area, Hyderabad, Telangana 500028</p>
+        </div>
+      `).addTo(markersRef.current);
 
-      L.circleMarker([17.4000, 78.4700], {
+      // East Hyderabad - Uppal
+      L.circleMarker([17.4000, 78.6000], {
         radius: 12,
         fillColor: 'yellow',
         color: '#000',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('AQI: 120 - Unhealthy for Sensitive').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Uppal</strong></h3>
+          <p><strong>Station Code:</strong> HYD_UPP_007</p>
+          <p><strong>AQI:</strong> 120</p>
+          <p><strong>PM2.5:</strong> 55 μg/m³</p>
+          <p><strong>PM10:</strong> 90 μg/m³</p>
+          <p><strong>NO₂:</strong> 35 ppb</p>
+          <p><strong>Coordinates:</strong> 17.4000°N, 78.6000°E</p>
+          <p><strong>Address:</strong> Uppal Area, Hyderabad, Telangana 500039</p>
+        </div>
+      `).addTo(markersRef.current);
 
-      L.circleMarker([17.3650, 78.4850], {
+      // Central Hyderabad - Malakpet
+      L.circleMarker([17.3600, 78.4800], {
         radius: 12,
         fillColor: 'lightgreen',
         color: '#000',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('AQI: 80 - Moderate').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Malakpet</strong></h3>
+          <p><strong>Station Code:</strong> HYD_MAL_008</p>
+          <p><strong>AQI:</strong> 80</p>
+          <p><strong>PM2.5:</strong> 35 μg/m³</p>
+          <p><strong>PM10:</strong> 60 μg/m³</p>
+          <p><strong>NO₂:</strong> 25 ppb</p>
+          <p><strong>Coordinates:</strong> 17.3600°N, 78.4800°E</p>
+          <p><strong>Address:</strong> Malakpet Area, Hyderabad, Telangana 500036</p>
+        </div>
+      `).addTo(markersRef.current);
+
+      // North-West Hyderabad - Jubilee Hills
+      L.circleMarker([17.4200, 78.3800], {
+        radius: 12,
+        fillColor: 'red',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup(`
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Jubilee Hills</strong></h3>
+          <p><strong>Station Code:</strong> HYD_JUB_009</p>
+          <p><strong>AQI:</strong> 280</p>
+          <p><strong>PM2.5:</strong> 145 μg/m³</p>
+          <p><strong>PM10:</strong> 190 μg/m³</p>
+          <p><strong>NO₂:</strong> 70 ppb</p>
+          <p><strong>Coordinates:</strong> 17.4200°N, 78.3800°E</p>
+          <p><strong>Address:</strong> Jubilee Hills Area, Hyderabad, Telangana 500033</p>
+        </div>
+      `).addTo(markersRef.current);
+
+      // South-East Hyderabad - Vanasthalipuram
+      L.circleMarker([17.3300, 78.5500], {
+        radius: 12,
+        fillColor: 'yellow',
+        color: '#000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      }).bindPopup(`
+        <div style="min-width: 250px;">
+          <h3><strong>CPCB Station - Vanasthalipuram</strong></h3>
+          <p><strong>Station Code:</strong> HYD_VAN_010</p>
+          <p><strong>AQI:</strong> 110</p>
+          <p><strong>PM2.5:</strong> 50 μg/m³</p>
+          <p><strong>PM10:</strong> 85 μg/m³</p>
+          <p><strong>NO₂:</strong> 30 ppb</p>
+          <p><strong>Coordinates:</strong> 17.3300°N, 78.5500°E</p>
+          <p><strong>Address:</strong> Vanasthalipuram Area, Hyderabad, Telangana 500070</p>
+        </div>
+      `).addTo(markersRef.current);
 
       console.log('Added 3 AQI stations');
     }
