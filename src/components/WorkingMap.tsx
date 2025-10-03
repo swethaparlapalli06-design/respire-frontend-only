@@ -113,7 +113,14 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('High Congestion - 80%').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 200px;">
+          <h3><strong>Traffic Segment</strong></h3>
+          <p><strong>Congestion:</strong> 80%</p>
+          <p><strong>Coordinates:</strong> 17.3750°N, 78.4750°E</p>
+          <p><strong>Address:</strong> Mehdipatnam Area, Hyderabad</p>
+        </div>
+      `).addTo(markersRef.current);
 
       L.circleMarker([17.3950, 78.4950], {
         radius: 10,
@@ -122,7 +129,14 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('Medium Congestion - 50%').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 200px;">
+          <h3><strong>Traffic Segment</strong></h3>
+          <p><strong>Congestion:</strong> 50%</p>
+          <p><strong>Coordinates:</strong> 17.3950°N, 78.4950°E</p>
+          <p><strong>Address:</strong> Jubilee Hills Area, Hyderabad</p>
+        </div>
+      `).addTo(markersRef.current);
 
       L.circleMarker([17.3700, 78.4900], {
         radius: 10,
@@ -131,7 +145,14 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('Low Congestion - 20%').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 200px;">
+          <h3><strong>Traffic Segment</strong></h3>
+          <p><strong>Congestion:</strong> 20%</p>
+          <p><strong>Coordinates:</strong> 17.3700°N, 78.4900°E</p>
+          <p><strong>Address:</strong> Secunderabad Area, Hyderabad</p>
+        </div>
+      `).addTo(markersRef.current);
 
       L.circleMarker([17.4000, 78.4700], {
         radius: 10,
@@ -140,7 +161,14 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('High Congestion - 85%').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 200px;">
+          <h3><strong>Traffic Segment</strong></h3>
+          <p><strong>Congestion:</strong> 85%</p>
+          <p><strong>Coordinates:</strong> 17.4000°N, 78.4700°E</p>
+          <p><strong>Address:</strong> Banjara Hills Area, Hyderabad</p>
+        </div>
+      `).addTo(markersRef.current);
 
       L.circleMarker([17.3650, 78.4850], {
         radius: 10,
@@ -149,7 +177,14 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
-      }).bindPopup('Medium Congestion - 60%').addTo(markersRef.current);
+      }).bindPopup(`
+        <div style="min-width: 200px;">
+          <h3><strong>Traffic Segment</strong></h3>
+          <p><strong>Congestion:</strong> 60%</p>
+          <p><strong>Coordinates:</strong> 17.3650°N, 78.4850°E</p>
+          <p><strong>Address:</strong> Malakpet Area, Hyderabad</p>
+        </div>
+      `).addTo(markersRef.current);
 
       // Add incident markers
       L.marker([17.3850, 78.4867])
