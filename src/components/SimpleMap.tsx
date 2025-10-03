@@ -37,6 +37,11 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ type, onSimulateSolution }) => {
           // Add markers layer
           markersRef.current.addTo(mapRef.current);
           
+          // Add a test marker to verify map is working
+          L.marker([17.3850, 78.4867])
+            .bindPopup('Test marker - Map is working!')
+            .addTo(markersRef.current);
+          
           // Hide loading message
           const loadingElement = document.getElementById('map-loading');
           if (loadingElement) {
@@ -71,6 +76,8 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ type, onSimulateSolution }) => {
         console.log('Fetching traffic data...');
         const data = await trafficApi.getTrafficData(bbox);
         console.log('Traffic data received:', data);
+        console.log('Number of segments:', data.segments?.length || 0);
+        console.log('Number of incidents:', data.incidents?.length || 0);
         
         if (data.segments && data.segments.length > 0) {
           data.segments.forEach((segment: any, index: number) => {
@@ -90,8 +97,9 @@ const SimpleMap: React.FC<SimpleMapProps> = ({ type, onSimulateSolution }) => {
                   <p><strong>Speed:</strong> ${segment.speedKmph} km/h</p>
                   <p><strong>Free Flow:</strong> ${segment.freeflowKmph} km/h</p>
                   <p><strong>Road Type:</strong> ${segment.roadType}</p>
-                     </div>
-                   `).addTo(markersRef.current);
+                </div>
+              `).addTo(markersRef.current);
+            }
           });
         } else {
           console.log('No traffic segments found');
