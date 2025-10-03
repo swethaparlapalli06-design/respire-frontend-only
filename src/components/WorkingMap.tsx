@@ -21,7 +21,17 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
   useEffect(() => {
     // Create map immediately
     if (!mapRef.current) {
-      mapRef.current = L.map('map-container').setView([17.3850, 78.4867], 12);
+      mapRef.current = L.map('map-container', {
+        center: [17.3850, 78.4867],
+        zoom: 12,
+        dragging: true,
+        touchZoom: true,
+        doubleClickZoom: true,
+        scrollWheelZoom: true,
+        boxZoom: true,
+        keyboard: true,
+        zoomControl: true
+      });
       
       // Add tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
