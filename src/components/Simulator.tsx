@@ -364,11 +364,66 @@ const Simulator: React.FC<SimulatorProps> = ({ alert, onClose }) => {
             </div>
           </div>
 
+          {/* Simulation Results - Always Visible */}
+          <div className="bg-white rounded-xl p-6 shadow-lg mb-6">
+            <div className="mb-6">
+              <h3 className="text-lg font-bold text-gray-900">Simulation Results</h3>
+              <p className="text-sm text-gray-600 mt-1">Select interventions below to see impact</p>
+            </div>
+            
+            {simulationResult ? (
+              <>
+                {/* Before AQI → After AQI */}
+                <div className="text-center mb-4">
+                  <div className="text-3xl font-bold text-gray-900">
+                    {alert.aqi} → {simulationResult.baseline.newAqi || Math.round(alert.aqi * (1 - simulationResult.simulationResults.aqiReduction / 100))}
+                  </div>
+                  <div className="text-sm text-gray-600 mt-1">Before AQI → After AQI</div>
+                </div>
+
+                {/* % Improvement */}
+                <div className="text-center mb-4">
+                  <div className="text-2xl font-bold text-green-600">
+                    {simulationResult.simulationResults.aqiReduction.toFixed(0)}%
+                  </div>
+                  <div className="text-sm text-gray-600">Improvement</div>
+                </div>
+
+                {/* Additional Impact Details */}
+                <div className="mt-4 pt-4 border-t border-gray-200">
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-blue-600">
+                      {simulationResult.simulationResults.populationBenefited.toLocaleString()}
+                    </div>
+                    <div className="text-xs text-gray-600">People Benefited</div>
+                  </div>
+                </div>
+
+                {/* Large Download PDF Button */}
+                <div className="mt-6 text-center">
+                  <button
+                    onClick={generatePDFReport}
+                    className="flex items-center justify-center space-x-3 mx-auto px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl hover:from-green-700 hover:to-blue-700 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105"
+                  >
+                    <Download className="h-6 w-6" />
+                    <span className="text-lg font-bold">Download Complete Report (PDF)</span>
+                  </button>
+                  <p className="text-xs text-gray-500 mt-2">Generate comprehensive urban planning report with all data</p>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-8">
+                <div className="text-gray-400 text-lg mb-2">📊</div>
+                <p className="text-gray-500">Select interventions below to see simulation results</p>
+              </div>
+            )}
+          </div>
+
           {/* Realistic Urban Planning Solutions */}
           <div className="h-full flex flex-col">
             <div className="flex items-center space-x-2 mb-6">
               <Star className="h-5 w-5 text-green-600" />
-              <h3 className="text-lg font-bold text-gray-900">Additional Solutions</h3>
+              <h3 className="text-lg font-bold text-gray-900">Urban Planning Solutions</h3>
             </div>
             
             {/* Scrollable Solutions Container */}
@@ -376,8 +431,8 @@ const Simulator: React.FC<SimulatorProps> = ({ alert, onClose }) => {
               <div 
                 className="overflow-y-auto pr-2 space-y-6 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 hover:scrollbar-thumb-gray-400" 
                 style={{ 
-                  maxHeight: '400px',
-                  minHeight: '300px',
+                  maxHeight: '300px',
+                  minHeight: '200px',
                   scrollbarWidth: 'thin',
                   scrollbarColor: '#d1d5db #f3f4f6'
                 }}
@@ -585,52 +640,6 @@ const Simulator: React.FC<SimulatorProps> = ({ alert, onClose }) => {
             </div>
           </div>
 
-          {/* Simulation Results - Simple Format */}
-          {simulationResult && (
-            <div className="bg-white rounded-xl p-6 shadow-lg">
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-gray-900">Simulation Results</h3>
-              </div>
-              
-              {/* Before AQI → After AQI */}
-              <div className="text-center mb-4">
-                <div className="text-3xl font-bold text-gray-900">
-                  {alert.aqi} → {simulationResult.baseline.newAqi || Math.round(alert.aqi * (1 - simulationResult.simulationResults.aqiReduction / 100))}
-                </div>
-                <div className="text-sm text-gray-600 mt-1">Before AQI → After AQI</div>
-              </div>
-
-              {/* % Improvement */}
-              <div className="text-center mb-4">
-                <div className="text-2xl font-bold text-green-600">
-                  {simulationResult.simulationResults.aqiReduction.toFixed(0)}%
-                </div>
-                <div className="text-sm text-gray-600">Improvement</div>
-              </div>
-
-              {/* Additional Impact Details */}
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <div className="text-center">
-                  <div className="text-lg font-bold text-blue-600">
-                    {simulationResult.simulationResults.populationBenefited.toLocaleString()}
-                  </div>
-                  <div className="text-xs text-gray-600">People Benefited</div>
-                </div>
-              </div>
-
-              {/* Large Download PDF Button */}
-              <div className="mt-6 text-center">
-                <button
-                  onClick={generatePDFReport}
-                  className="flex items-center justify-center space-x-3 mx-auto px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl hover:from-green-700 hover:to-blue-700 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105"
-                >
-                  <Download className="h-6 w-6" />
-                  <span className="text-lg font-bold">Download Complete Report (PDF)</span>
-                </button>
-                <p className="text-xs text-gray-500 mt-2">Generate comprehensive urban planning report with all data</p>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
