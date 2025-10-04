@@ -421,7 +421,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Target}
                       selected={interventions.lowEmissionZone}
                       onClick={() => handleInterventionChange('lowEmissionZone', !interventions.lowEmissionZone)}
-                      aqiReduction={Math.round(alert.aqi * 0.18)}
+                      aqiReduction={Math.round(alertData.aqi * 0.18)}
                     />
                     <InterventionCard
                       title="Dust Control Measures"
@@ -543,4 +543,4 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
   );
 };
 
-export default Simulator;image.png
+export default Simulator;
