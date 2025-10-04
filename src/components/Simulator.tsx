@@ -91,54 +91,54 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
       console.log('Running simulation with interventions:', interventionsToUse);
       
       // Calculate new AQI based on selected interventions
-      let newAQI = alert.aqi;
+      let newAQI = alertData.aqi;
       let aqiReduction = 0;
       
       // Apply realistic urban intervention effects
       
       // Traffic & Transport (5-20% AQI reduction)
-      if (interventionsToUse.dedicatedBusLanes) { newAQI -= alert.aqi * 0.12; aqiReduction += alert.aqi * 0.12; }
-      if (interventionsToUse.bikeWalkingInfrastructure) { newAQI -= alert.aqi * 0.08; aqiReduction += alert.aqi * 0.08; }
-      if (interventionsToUse.smartTrafficSignals) { newAQI -= alert.aqi * 0.10; aqiReduction += alert.aqi * 0.10; }
-      if (interventionsToUse.vehicleRestrictions) { newAQI -= alert.aqi *  .15; aqiReduction += alert.aqi * 0.15; }
-      if (interventionsToUse.publicTransportBoost) { newAQI -= alert.aqi * 0.12; aqiReduction += alert.aqi * 0.12; }
-      if (interventionsToUse.evChargingIncentives) { newAQI -= alert.aqi * 0.15; aqiReduction += alert.aqi * 0.15; }
+      if (interventionsToUse.dedicatedBusLanes) { newAQI -= alertData.aqi * 0.12; aqiReduction += alertData.aqi * 0.12; }
+      if (interventionsToUse.bikeWalkingInfrastructure) { newAQI -= alertData.aqi * 0.08; aqiReduction += alertData.aqi * 0.08; }
+      if (interventionsToUse.smartTrafficSignals) { newAQI -= alertData.aqi * 0.10; aqiReduction += alertData.aqi * 0.10; }
+      if (interventionsToUse.vehicleRestrictions) { newAQI -= alertData.aqi * 0.15; aqiReduction += alertData.aqi * 0.15; }
+      if (interventionsToUse.publicTransportBoost) { newAQI -= alertData.aqi * 0.12; aqiReduction += alertData.aqi * 0.12; }
+      if (interventionsToUse.evChargingIncentives) { newAQI -= alertData.aqi * 0.15; aqiReduction += alertData.aqi * 0.15; }
       
       // Urban Design & Environment (5-20% AQI reduction)
-      if (interventionsToUse.treeCanopyGreenBuffers) { newAQI -= alert.aqi * 0.08; aqiReduction += alert.aqi * 0.08; }
-      if (interventionsToUse.lowEmissionZone) { newAQI -= alert.aqi * 0.18; aqiReduction += alert.aqi * 0.18; }
-      if (interventionsToUse.dustControlMeasures) { newAQI -= alert.aqi * 0.10; aqiReduction += alert.aqi * 0.10; }
-      if (interventionsToUse.streetTrees) { newAQI -= alert.aqi * 0.06; aqiReduction += alert.aqi * 0.06; }
-      if (interventionsToUse.greenWalls) { newAQI -= alert.aqi * 0.05; aqiReduction += alert.aqi * 0.05; }
-      if (interventionsToUse.permeablePavement) { newAQI -= alert.aqi * 0.04; aqiReduction += alert.aqi * 0.04; }
+      if (interventionsToUse.treeCanopyGreenBuffers) { newAQI -= alertData.aqi * 0.08; aqiReduction += alertData.aqi * 0.08; }
+      if (interventionsToUse.lowEmissionZone) { newAQI -= alertData.aqi * 0.18; aqiReduction += alertData.aqi * 0.18; }
+      if (interventionsToUse.dustControlMeasures) { newAQI -= alertData.aqi * 0.10; aqiReduction += alertData.aqi * 0.10; }
+      if (interventionsToUse.streetTrees) { newAQI -= alertData.aqi * 0.06; aqiReduction += alertData.aqi * 0.06; }
+      if (interventionsToUse.greenWalls) { newAQI -= alertData.aqi * 0.05; aqiReduction += alertData.aqi * 0.05; }
+      if (interventionsToUse.permeablePavement) { newAQI -= alertData.aqi * 0.04; aqiReduction += alertData.aqi * 0.04; }
       
       // Policy & Quick Fixes (10-25% AQI reduction)
-      if (interventionsToUse.banOpenBurning) { newAQI -= alert.aqi * 0.20; aqiReduction += alert.aqi * 0.20; }
-      if (interventionsToUse.constructionDustControl) { newAQI -= alert.aqi * 0.12; aqiReduction += alert.aqi * 0.12; }
-      if (interventionsToUse.wasteManagement) { newAQI -= alert.aqi * 0.08; aqiReduction += alert.aqi * 0.08; }
-      if (interventionsToUse.industrialEmissionControls) { newAQI -= alert.aqi * 0.22; aqiReduction += alert.aqi * 0.22; }
-      if (interventionsToUse.vehicleEmissionTesting) { newAQI -= alert.aqi * 0.10; aqiReduction += alert.aqi * 0.10; }
-      if (interventionsToUse.publicAwareness) { newAQI -= alert.aqi * 0.05; aqiReduction += alert.aqi * 0.05; }
+      if (interventionsToUse.banOpenBurning) { newAQI -= alertData.aqi * 0.20; aqiReduction += alertData.aqi * 0.20; }
+      if (interventionsToUse.constructionDustControl) { newAQI -= alertData.aqi * 0.12; aqiReduction += alertData.aqi * 0.12; }
+      if (interventionsToUse.wasteManagement) { newAQI -= alertData.aqi * 0.08; aqiReduction += alertData.aqi * 0.08; }
+      if (interventionsToUse.industrialEmissionControls) { newAQI -= alertData.aqi * 0.22; aqiReduction += alertData.aqi * 0.22; }
+      if (interventionsToUse.vehicleEmissionTesting) { newAQI -= alertData.aqi * 0.10; aqiReduction += alertData.aqi * 0.10; }
+      if (interventionsToUse.publicAwareness) { newAQI -= alertData.aqi * 0.05; aqiReduction += alertData.aqi * 0.05; }
       
       // Prevent negative AQI
       newAQI = Math.max(newAQI, 0);
       
       // Calculate improvement percentage
-      const improvementPercent = ((alert.aqi - newAQI) / alert.aqi) * 100;
+      const improvementPercent = ((alertData.aqi - newAQI) / alertData.aqi) * 100;
       
       // Calculate population benefited
-      const populationBenefited = Math.round((alert.populationExposed || 0) * (improvementPercent / 100));
+      const populationBenefited = Math.round((alertData.populationExposed || 0) * (improvementPercent / 100));
       
       // Create simulation result
       const result = {
-        zoneId: alert.zoneId,
+        zoneId: alertData.zoneId,
         baseline: {
-          currentAqi: alert.aqi,
+          currentAqi: alertData.aqi,
           newAqi: Math.round(newAQI),
-          currentPm25: Math.round(alert.aqi * 0.4),
-          currentPm10: Math.round(alert.aqi * 0.6),
-          currentNo2: Math.round(alert.aqi * 0.2),
-          populationExposed: alert.populationExposed
+          currentPm25: Math.round(alertData.aqi * 0.4),
+          currentPm10: Math.round(alertData.aqi * 0.6),
+          currentNo2: Math.round(alertData.aqi * 0.2),
+          populationExposed: alertData.populationExposed
         },
         interventions: interventionsToUse,
         simulationResults: {
@@ -185,15 +185,15 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
       
       doc.setFontSize(12);
       doc.setFont('helvetica', 'normal');
-      doc.text(`Zone: ${alert.zoneId}`, 20, 50);
-      doc.text(`Current AQI: ${alert.aqi}`, 20, 70);
-      doc.text(`Improved AQI: ${simulationResult.baseline.newAqi || Math.round(alert.aqi * (1 - simulationResult.simulationResults.aqiReduction / 100))}`, 20, 90);
+      doc.text(`Zone: ${alertData.zoneId}`, 20, 50);
+      doc.text(`Current AQI: ${alertData.aqi}`, 20, 70);
+      doc.text(`Improved AQI: ${simulationResult.baseline.newAqi || Math.round(alertData.aqi * (1 - simulationResult.simulationResults.aqiReduction / 100))}`, 20, 90);
       doc.text(`Improvement: ${simulationResult.simulationResults.aqiReduction.toFixed(0)}%`, 20, 110);
       doc.text(`People Benefited: ${simulationResult.simulationResults.populationBenefited.toLocaleString()}`, 20, 130);
       doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 20, 150);
       
       // Save the PDF
-      const fileName = `Air_Quality_Report_${alert.zoneId}_${new Date().toISOString().split('T')[0]}.pdf`;
+      const fileName = `Air_Quality_Report_${alertData.zoneId}_${new Date().toISOString().split('T')[0]}.pdf`;
       console.log('Saving PDF as:', fileName);
       doc.save(fileName);
       
@@ -231,7 +231,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">Solution Simulator</h2>
-            <p className="text-gray-600 mt-1">Test interventions for {alert.zoneName}</p>
+            <p className="text-gray-600 mt-1">Test interventions for {alertData.zoneName}</p>
           </div>
           <button
             onClick={onClose}
@@ -247,11 +247,11 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
             <h3 className="text-lg font-bold text-gray-900 mb-4">Current Conditions</h3>
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-                <div className="text-3xl font-bold text-red-600">{alert.aqi}</div>
+                <div className="text-3xl font-bold text-red-600">{alertData.aqi}</div>
                 <div className="text-sm text-gray-600">AQI</div>
               </div>
               <div className="bg-white rounded-xl p-4 text-center shadow-sm">
-                <div className="text-3xl font-bold text-orange-600">{alert.aqi > 200 ? '92' : '75'}</div>
+                <div className="text-3xl font-bold text-orange-600">{alertData.aqi > 200 ? '92' : '75'}</div>
                 <div className="text-sm text-gray-600">PM2.5 µg/m³</div>
               </div>
               <div className="bg-white rounded-xl p-4 text-center shadow-sm">
@@ -273,7 +273,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                 {/* Before AQI → After AQI */}
                 <div className="text-center mb-4">
                   <div className="text-3xl font-bold text-gray-900">
-                    {alert.aqi} → {simulationResult.baseline.newAqi || Math.round(alert.aqi * (1 - simulationResult.simulationResults.aqiReduction / 100))}
+                    {alertData.aqi} → {simulationResult.baseline.newAqi || Math.round(alertData.aqi * (1 - simulationResult.simulationResults.aqiReduction / 100))}
                   </div>
                   <div className="text-sm text-gray-600 mt-1">Before AQI → After AQI</div>
                 </div>
@@ -348,7 +348,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Bus}
                       selected={interventions.dedicatedBusLanes}
                       onClick={() => handleInterventionChange('dedicatedBusLanes', !interventions.dedicatedBusLanes)}
-                      aqiReduction={Math.round(alert.aqi * 0.12)}
+                      aqiReduction={Math.round(alertData.aqi * 0.12)}
                     />
                     <InterventionCard
                       title="Bike & Walking Infrastructure"
@@ -357,7 +357,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Car}
                       selected={interventions.bikeWalkingInfrastructure}
                       onClick={() => handleInterventionChange('bikeWalkingInfrastructure', !interventions.bikeWalkingInfrastructure)}
-                      aqiReduction={Math.round(alert.aqi * 0.08)}
+                      aqiReduction={Math.round(alertData.aqi * 0.08)}
                     />
                     <InterventionCard
                       title="Smart Traffic Signals"
@@ -366,7 +366,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Zap}
                       selected={interventions.smartTrafficSignals}
                       onClick={() => handleInterventionChange('smartTrafficSignals', !interventions.smartTrafficSignals)}
-                      aqiReduction={Math.round(alert.aqi * 0.10)}
+                      aqiReduction={Math.round(alertData.aqi * 0.10)}
                     />
                     <InterventionCard
                       title="Vehicle Restrictions"
@@ -375,7 +375,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Target}
                       selected={interventions.vehicleRestrictions}
                       onClick={() => handleInterventionChange('vehicleRestrictions', !interventions.vehicleRestrictions)}
-                      aqiReduction={Math.round(alert.aqi * 0.15)}
+                      aqiReduction={Math.round(alertData.aqi * 0.15)}
                     />
                     <InterventionCard
                       title="Public Transport Boost"
@@ -384,7 +384,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Bus}
                       selected={interventions.publicTransportBoost}
                       onClick={() => handleInterventionChange('publicTransportBoost', !interventions.publicTransportBoost)}
-                      aqiReduction={Math.round(alert.aqi * 0.12)}
+                      aqiReduction={Math.round(alertData.aqi * 0.12)}
                     />
                     <InterventionCard
                       title="EV Charging & Incentives"
@@ -393,7 +393,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Zap}
                       selected={interventions.evChargingIncentives}
                       onClick={() => handleInterventionChange('evChargingIncentives', !interventions.evChargingIncentives)}
-                      aqiReduction={Math.round(alert.aqi * 0.15)}
+                      aqiReduction={Math.round(alertData.aqi * 0.15)}
                     />
                   </div>
                 </div>
@@ -412,7 +412,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={TreePine}
                       selected={interventions.treeCanopyGreenBuffers}
                       onClick={() => handleInterventionChange('treeCanopyGreenBuffers', !interventions.treeCanopyGreenBuffers)}
-                      aqiReduction={Math.round(alert.aqi * 0.08)}
+                      aqiReduction={Math.round(alertData.aqi * 0.08)}
                     />
                     <InterventionCard
                       title="Low-Emission Zone (LEZ)"
@@ -430,7 +430,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Shield}
                       selected={interventions.dustControlMeasures}
                       onClick={() => handleInterventionChange('dustControlMeasures', !interventions.dustControlMeasures)}
-                      aqiReduction={Math.round(alert.aqi * 0.10)}
+                      aqiReduction={Math.round(alertData.aqi * 0.10)}
                     />
                     <InterventionCard
                       title="Street Trees"
@@ -439,7 +439,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={TreePine}
                       selected={interventions.streetTrees}
                       onClick={() => handleInterventionChange('streetTrees', !interventions.streetTrees)}
-                      aqiReduction={Math.round(alert.aqi * 0.06)}
+                      aqiReduction={Math.round(alertData.aqi * 0.06)}
                     />
                     <InterventionCard
                       title="Green Walls"
@@ -448,7 +448,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={TreePine}
                       selected={interventions.greenWalls}
                       onClick={() => handleInterventionChange('greenWalls', !interventions.greenWalls)}
-                      aqiReduction={Math.round(alert.aqi * 0.05)}
+                      aqiReduction={Math.round(alertData.aqi * 0.05)}
                     />
                     <InterventionCard
                       title="Permeable Pavement"
@@ -457,7 +457,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={TreePine}
                       selected={interventions.permeablePavement}
                       onClick={() => handleInterventionChange('permeablePavement', !interventions.permeablePavement)}
-                      aqiReduction={Math.round(alert.aqi * 0.04)}
+                      aqiReduction={Math.round(alertData.aqi * 0.04)}
                     />
                   </div>
                 </div>
@@ -476,7 +476,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Shield}
                       selected={interventions.banOpenBurning}
                       onClick={() => handleInterventionChange('banOpenBurning', !interventions.banOpenBurning)}
-                      aqiReduction={Math.round(alert.aqi * 0.20)}
+                      aqiReduction={Math.round(alertData.aqi * 0.20)}
                     />
                     <InterventionCard
                       title="Construction Dust Control"
@@ -485,7 +485,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Shield}
                       selected={interventions.constructionDustControl}
                       onClick={() => handleInterventionChange('constructionDustControl', !interventions.constructionDustControl)}
-                      aqiReduction={Math.round(alert.aqi * 0.12)}
+                      aqiReduction={Math.round(alertData.aqi * 0.12)}
                     />
                     <InterventionCard
                       title="Waste Management"
@@ -494,7 +494,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Shield}
                       selected={interventions.wasteManagement}
                       onClick={() => handleInterventionChange('wasteManagement', !interventions.wasteManagement)}
-                      aqiReduction={Math.round(alert.aqi * 0.08)}
+                      aqiReduction={Math.round(alertData.aqi * 0.08)}
                     />
                     <InterventionCard
                       title="Industrial Emission Controls"
@@ -503,7 +503,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Shield}
                       selected={interventions.industrialEmissionControls}
                       onClick={() => handleInterventionChange('industrialEmissionControls', !interventions.industrialEmissionControls)}
-                      aqiReduction={Math.round(alert.aqi * 0.22)}
+                      aqiReduction={Math.round(alertData.aqi * 0.22)}
                     />
                     <InterventionCard
                       title="Vehicle Emission Testing"
@@ -512,7 +512,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Shield}
                       selected={interventions.vehicleEmissionTesting}
                       onClick={() => handleInterventionChange('vehicleEmissionTesting', !interventions.vehicleEmissionTesting)}
-                      aqiReduction={Math.round(alert.aqi * 0.10)}
+                      aqiReduction={Math.round(alertData.aqi * 0.10)}
                     />
                     <InterventionCard
                       title="Public Awareness"
@@ -521,7 +521,7 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
                       icon={Lightbulb}
                       selected={interventions.publicAwareness}
                       onClick={() => handleInterventionChange('publicAwareness', !interventions.publicAwareness)}
-                      aqiReduction={Math.round(alert.aqi * 0.05)}
+                      aqiReduction={Math.round(alertData.aqi * 0.05)}
                     />
                   </div>
                 </div>
@@ -543,4 +543,4 @@ const Simulator: React.FC<SimulatorProps> = ({ alert: alertData, onClose }) => {
   );
 };
 
-export default Simulator;
+export default Simulator;image.png
