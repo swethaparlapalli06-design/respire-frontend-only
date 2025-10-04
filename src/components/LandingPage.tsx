@@ -51,8 +51,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
           </div>
 
-          {/* Call-to-Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* Call-to-Action Button */}
+          <div className="flex justify-center">
             <button
               onClick={onGetStarted}
               className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
@@ -60,39 +60,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
               <Play className="w-5 h-5" />
               <span>GET STARTED</span>
             </button>
-            
-            <button className="bg-white text-black border-2 border-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
-              SEE MORE
-            </button>
           </div>
         </div>
 
-        {/* Features Preview */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🌍</span>
-            </div>
-            <h3 className="text-lg font-semibold text-black mb-2">Real-time Monitoring</h3>
-            <p className="text-gray-600 text-sm">Live traffic and air quality data from across the city</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🧪</span>
-            </div>
-            <h3 className="text-lg font-semibold text-black mb-2">What-If Simulator</h3>
-            <p className="text-gray-600 text-sm">Test urban interventions and see their impact instantly</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">📊</span>
-            </div>
-            <h3 className="text-lg font-semibold text-black mb-2">Analytics & Reports</h3>
-            <p className="text-gray-600 text-sm">Generate comprehensive PDF reports for stakeholders</p>
-          </div>
-        </div>
       </div>
     </div>
   );
