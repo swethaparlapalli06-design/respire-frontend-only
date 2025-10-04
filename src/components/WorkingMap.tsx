@@ -279,10 +279,10 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 250px;">
           <h3><strong>CPCB Station - Abids Junction</strong></h3>
           <p><strong>Station Code:</strong> HYD_ABD_001</p>
-          <p><strong>AQI:</strong> 180</p>
-          <p><strong>PM2.5:</strong> 85 μg/m³</p>
-          <p><strong>PM10:</strong> 120 μg/m³</p>
-          <p><strong>NO₂:</strong> 45 ppb</p>
+          <p><strong>AQI:</strong> 245</p>
+          <p><strong>PM2.5:</strong> 105 μg/m³</p>
+          <p><strong>PM10:</strong> 150 μg/m³</p>
+          <p><strong>NO₂:</strong> 55 ppb</p>
           <p><strong>Coordinates:</strong> 17.3850°N, 78.4867°E</p>
           <p><strong>Address:</strong> Abids Junction, Hyderabad, Telangana 500001</p>
         </div>
@@ -290,7 +290,7 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
 
       L.circleMarker([17.3800, 78.4800], {
         radius: 15,
-        fillColor: 'orange',
+        fillColor: 'red',
         color: '#000',
         weight: 2,
         opacity: 1,
@@ -299,10 +299,10 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 250px;">
           <h3><strong>CPCB Station - Charminar</strong></h3>
           <p><strong>Station Code:</strong> HYD_CHM_002</p>
-          <p><strong>AQI:</strong> 220</p>
-          <p><strong>PM2.5:</strong> 105 μg/m³</p>
-          <p><strong>PM10:</strong> 150 μg/m³</p>
-          <p><strong>NO₂:</strong> 55 ppb</p>
+          <p><strong>AQI:</strong> 265</p>
+          <p><strong>PM2.5:</strong> 115 μg/m³</p>
+          <p><strong>PM10:</strong> 160 μg/m³</p>
+          <p><strong>NO₂:</strong> 60 ppb</p>
           <p><strong>Coordinates:</strong> 17.3800°N, 78.4800°E</p>
           <p><strong>Address:</strong> Charminar Area, Hyderabad, Telangana 500002</p>
         </div>
@@ -310,7 +310,7 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
 
       L.circleMarker([17.3900, 78.4800], {
         radius: 15,
-        fillColor: 'yellow',
+        fillColor: 'purple',
         color: '#000',
         weight: 2,
         opacity: 1,
@@ -319,10 +319,10 @@ const WorkingMap: React.FC<WorkingMapProps> = ({ type }) => {
         <div style="min-width: 250px;">
           <h3><strong>CPCB Station - Kukatpally Road</strong></h3>
           <p><strong>Station Code:</strong> HYD_KUK_003</p>
-          <p><strong>AQI:</strong> 160</p>
-          <p><strong>PM2.5:</strong> 75 μg/m³</p>
-          <p><strong>PM10:</strong> 110 μg/m³</p>
-          <p><strong>NO₂:</strong> 40 ppb</p>
+          <p><strong>AQI:</strong> 320</p>
+          <p><strong>PM2.5:</strong> 145 μg/m³</p>
+          <p><strong>PM10:</strong> 195 μg/m³</p>
+          <p><strong>NO₂:</strong> 70 ppb</p>
           <p><strong>Coordinates:</strong> 17.3900°N, 78.4800°E</p>
           <p><strong>Address:</strong> Kukatpally Road, Hyderabad, Telangana 500003</p>
         </div>
