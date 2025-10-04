@@ -44,12 +44,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             and environmental researchers.
           </p>
 
-          {/* Content Indicators */}
-          <div className="flex space-x-2 mb-12">
-            <div className="w-3 h-3 bg-black rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-          </div>
+          
 
           {/* Call-to-Action Button */}
           <div className="flex justify-center">
